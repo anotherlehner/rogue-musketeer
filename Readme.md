@@ -1,6 +1,6 @@
-# The Horror of Blackbird Hollow
+# Musket
 
-A dark fantasy roguelike.
+A 17th century Lovecraftian roguelike.
 
 ## Play Online
 
