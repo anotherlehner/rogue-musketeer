@@ -1,4 +1,4 @@
-# Musket
+# Rogue Musket
 
 A 17th century Lovecraftian roguelike.
 
