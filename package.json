@@ -1,7 +1,7 @@
 {
-  "name": "rogue-musket",
+  "name": "rogue-musketeer",
   "version": "0.0.1",
-  "description": "A dark fantasy roguelike",
+  "description": "A 17th century Lovecraftian roguelike.",
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html --no-source-maps --public-url ./"

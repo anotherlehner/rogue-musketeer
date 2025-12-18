@@ -1,4 +1,4 @@
-# Rogue Musket
+# Rogue Musketeer
 
 A 17th century Lovecraftian roguelike.
 
