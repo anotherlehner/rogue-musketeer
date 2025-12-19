@@ -1,9 +1,7 @@
 import { Howl } from 'howler';
 
+// TODO: rewrite this
 export function sound(soundObject, volumeLevel=1.0) {
-    var sound = new Howl({
-        src: [soundObject],
-        volume: volumeLevel,
-    });
+    const sound = new Howl({src: [soundObject], volume: volumeLevel,});
     sound.play();
 }

@@ -5,6 +5,7 @@ import { World, MapTile, TileType } from "./world";
 import { Env, GameMode } from "./env";
 import { Display } from "rot-js";
 import { getWeapon } from "./weapons";
+import {LOG_AREA_y, STATUS_AREA_size} from "./constants";
 
 function drawMap(display: Display, map: World) {
     for (const [key, value] of Object.entries(map.tiles)) {
@@ -34,7 +35,7 @@ function drawHelp(display: Display) {
 function drawStats(env: Env) {
     let display = env.display;
     let player = env.player;
-    clearRow(display, constants.STATS_ROW);
+    clearRow(display, constants.STATUS_ROW_y);
     let healthDescr = `%c{${constants.COL_fg_health}}Hp: ${player.health} %c{grey}ǂ`;
     let armorDescr = `%c{${constants.COL_fg_armor}}Ar: ${player.armor} %c{grey}ǂ`;
     let weapon = getWeapon(player.weapon);
@@ -46,11 +47,11 @@ function drawStats(env: Env) {
     let range = `range: ${weapon.range} `;
     let damage = `damage: ${weapon.damageMin}-${weapon.damageMax}`;
     let weaponDescr = `%c{${constants.COL_fg_weapon}}${weapon.description}${shots} %c{grey}(${range}${damage})`;
-    display.drawText(0, constants.STATS_ROW, `${healthDescr} ${armorDescr} ${weaponDescr}`, constants.WIN_width);
+    display.drawText(0, constants.STATUS_ROW_y, `${healthDescr} ${armorDescr} ${weaponDescr}`, constants.WIN_width);
 }
 
 function drawLookDescription(display: Display, env: Env) {
-    clearRow(display, constants.STATS_ROW);
+    clearRow(display, constants.STATUS_ROW_y);
     let world = env.world;
     let lookerPos = env.looker.position;
     let xyEnt: Entity = world.getFirstEntityAt(lookerPos);
@@ -58,7 +59,7 @@ function drawLookDescription(display: Display, env: Env) {
     let descr = "unknown";
     if (xyEnt) descr = xyEnt.description();
     else descr = xyMap.description();
-    display.drawText(0, constants.STATS_ROW, `: ${descr}`, constants.WIN_width);
+    display.drawText(0, constants.STATUS_ROW_y, `: ${descr}`, constants.WIN_width);
 }
 
 function clearRow(display: Display, r: number) {
@@ -112,13 +113,13 @@ function drawFov(env: Env) {
 }
 
 export function drawMessages(display: Display, messages: Message[]) {
-    for (let i = -3; i + 3 < messages.length; i++) {
-        display.drawText(0, constants.WIN_height + i, messages[i + 3].content);
+    for (let i = -LOG_AREA_y; i + LOG_AREA_y < messages.length; i++) {
+        display.drawText(0, constants.WIN_height + i, messages[i + LOG_AREA_y].content);
     }
 }
 
 export function clearMessageRows(display: Display) {
-    for (let i = -3; i < 0; i++) {
+    for (let i = -LOG_AREA_y; i < 0; i++) {
         clearRow(display, constants.WIN_height + i);
     }
 }

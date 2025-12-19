@@ -1,12 +1,14 @@
-import { KEYS } from "rot-js";
+import {KEYS} from "rot-js";
 
 // DIMENSIONS
 
+export const STATUS_AREA_size = 5;
+
 export const WIN_width = 80;
-export const WIN_height = 34;
+export const WIN_height = 35;
 
 export const MAP_width = WIN_width;
-export const MAP_height = 30;
+export const MAP_height = WIN_height - STATUS_AREA_size;
 
 // COLORS
 
@@ -42,6 +44,8 @@ export const WEAPON3_KEY = KEYS.VK_3;
 
 // GAME
 
-export const STATS_ROW = WIN_height - 4;
+export const STATUS_ROW_y = WIN_height - STATUS_AREA_size;
+export const LOG_AREA_y = STATUS_AREA_size - 1;
+export const LOG_MSG_max_age = 5;
 
 export const FOV_RANGE = 10;
